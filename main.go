@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Go Redis Tutorial.")
+	fmt.Println("Go Redis.")
 
 	client := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
