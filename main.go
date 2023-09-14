@@ -30,8 +30,3 @@ func main() {
 
 	app.Listen(":3000")
 }
-
-type CacheField struct {
-	Key  string `json:key`
-	Body string `json:body`
-}
