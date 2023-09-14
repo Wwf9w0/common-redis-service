@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/go-redis/redis"
+	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
@@ -20,4 +21,17 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println(pong)
+
+	app := fiber.New()
+
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("Hello, World 👋!")
+	})
+
+	app.Listen(":3000")
+}
+
+type CacheField struct {
+	Key  string `json:key`
+	Body string `json:body`
 }
