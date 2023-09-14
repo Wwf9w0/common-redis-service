@@ -16,16 +16,24 @@ func main() {
 		DB:       0,
 	})
 
-	pong, err := client.Ping().Result()
+	/*pong, err := client.Ping().Result()
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(pong)
+	fmt.Println(pong)*/
 
 	app := fiber.New()
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, World 👋!")
+	})
+
+	app.Get("/redis", func(c *fiber.Ctx) error {
+		pong, err := client.Ping().Result()
+		if err != nil {
+			fmt.Println(err)
+		}
+		return c.SendString(pong)
 	})
 
 	app.Listen(":3000")
